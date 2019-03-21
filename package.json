@@ -14,19 +14,20 @@
   "author": {
     "name": "Digital Bazaar, Inc.",
     "email": "support@digitalbazaar.com",
-    "url": "http://digitalbazaar.com"
+    "url": "https://digitalbazaar.com"
   },
   "bugs": {
     "url": "https://github.com/digitalbazaar/bedrock-kms/issues"
   },
   "homepage": "https://github.com/digitalbazaar/bedrock-kms",
   "peerDependencies": {
-    "bedrock": "^1.12.1"
+    "bedrock": "^1.12.1",
+    "bedrock-package-manager": "digitalbazaar/bedrock-package-manager#initial"
   },
   "directories": {
     "lib": "./lib"
   },
   "devDependencies": {
-    "eslint-config-digitalbazaar": "^1.4.0"
+    "eslint-config-digitalbazaar": "^2.0.0"
   }
 }
