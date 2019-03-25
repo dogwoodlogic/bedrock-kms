@@ -22,7 +22,7 @@
   "homepage": "https://github.com/digitalbazaar/bedrock-kms",
   "peerDependencies": {
     "bedrock": "^1.12.1",
-    "bedrock-package-manager": "digitalbazaar/bedrock-package-manager#initial"
+    "bedrock-package-manager": "^1.0.0"
   },
   "directories": {
     "lib": "./lib"
