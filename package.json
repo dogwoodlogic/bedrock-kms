@@ -22,6 +22,7 @@
   "homepage": "https://github.com/digitalbazaar/bedrock-kms",
   "peerDependencies": {
     "bedrock": "^1.12.1",
+    "bedrock-mongodb": "^5.5.0",    
     "bedrock-package-manager": "^1.0.0"
   },
   "directories": {
