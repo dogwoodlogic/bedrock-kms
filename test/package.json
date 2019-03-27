@@ -27,6 +27,7 @@
     "bedrock": "^1.12.1",
     "bedrock-kms": "file:..",
     "bedrock-mongodb": "^5.5.0",
+    "bedrock-security-context": "github:digitalbazaar/bedrock-security-context#initial",
     "bedrock-test": "^2.0.0"
   }
 }
