@@ -10,14 +10,16 @@ const mockData = require('./mock.data');
 describe('bedrock-kms', () => {
   before(async () => {});
 
-  describe('alpha API', () => {
-    describe('section 1', async () => {
-      it('Test A', async () => {});
-    }); // end section 1
-  }); // end alpha API
-  describe('beta API', () => {
-    describe('section 1', () => {
-      it('should return error on non-existent account', async () => {});
-    }); // end section 1
-  }); // end beta API
+  describe('callMethod API', () => {
+    it('does something', async () => {
+      const operation = {};
+      let error;
+      let result;
+      try {
+        result = await brKms.callMethod({operation});
+      } catch(e) {
+        error = e;
+      }
+    });
+  }); // end callMethod API
 }); // end bedrock-kms

@@ -24,10 +24,12 @@
   },
   "homepage": "https://github.com/digitalbazaar/bedrock-kms",
   "dependencies": {
-    "bedrock": "^1.12.1",
+    "bedrock": "^1.15.0",
     "bedrock-kms": "file:..",
     "bedrock-mongodb": "^5.5.0",
+    "bedrock-package-manager": "^1.0.0",
     "bedrock-security-context": "github:digitalbazaar/bedrock-security-context#initial",
+    "bedrock-ssm-mongodb": "github:digitalbazaar/bedrock-ssm-mongodb#initial",
     "bedrock-test": "^2.0.0"
   }
 }
