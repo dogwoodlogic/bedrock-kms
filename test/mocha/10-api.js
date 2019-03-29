@@ -10,13 +10,13 @@ const mockData = require('./mock.data');
 describe('bedrock-kms', () => {
   before(async () => {});
 
-  describe('callMethod API', () => {
+  describe('runOperation API', () => {
     it('does something', async () => {
       const operation = {};
       let error;
       let result;
       try {
-        result = await brKms.callMethod({operation});
+        result = await brKms.runOperation({operation});
       } catch(e) {
         error = e;
       }
