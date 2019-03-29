@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/digitalbazaar/bedrock-kms",
   "peerDependencies": {
-    "bedrock": "^1.12.1",
+    "bedrock": "^1.15.0",
     "bedrock-mongodb": "^5.5.0",
     "bedrock-package-manager": "^1.0.0",
     "bedrock-security-context": "^1.0.0"
@@ -32,5 +32,9 @@
   "devDependencies": {
     "eslint": "^5.15.3",
     "eslint-config-digitalbazaar": "^2.0.0"
+  },
+  "dependencies": {
+    "jsonld-signatures": "^4.0.1",
+    "ocapld": "^1.1.0"
   }
 }
