@@ -28,7 +28,7 @@
     "bedrock-kms": "file:..",
     "bedrock-mongodb": "^5.5.0",
     "bedrock-package-manager": "^1.0.0",
-    "bedrock-security-context": "github:digitalbazaar/bedrock-security-context#initial",
+    "bedrock-security-context": "^1.0.0",
     "bedrock-ssm-mongodb": "github:digitalbazaar/bedrock-ssm-mongodb#initial",
     "bedrock-test": "^2.0.0"
   }
