@@ -13,6 +13,26 @@ describe('bedrock-kms', () => {
 
   describe('runOperation API', () => {
     describe('GenerateKeyOperation', () => {
+      it('successfully generates a Ed25519VerificationKey2018', async () => {
+        const keyId = `https://example.com/kms/ssm-v1/${uuid()}`;
+        const operation = clone(mockData.operations.generate);
+        operation.invocationTarget.id = keyId;
+        operation.invocationTarget.type = 'Ed25519VerificationKey2018';
+        let error;
+        let result;
+        try {
+          result = await brKms.runOperation({operation});
+        } catch(e) {
+          error = e;
+        }
+        assertNoError(error);
+        should.exist(result);
+        Object.keys(result).should.have.same.members(
+          ['id', 'publicKeyBase58', 'type']);
+        result.id.should.equal(keyId);
+        result.type.should.equal(operation.invocationTarget.type);
+        result.publicKeyBase58.should.be.a('string');
+      });
       it('successfully generates a Sha256HmacKey2019', async () => {
         const keyId = `https://example.com/kms/ssm-v1/${uuid()}`;
         const operation = clone(mockData.operations.generate);
@@ -27,6 +47,8 @@ describe('bedrock-kms', () => {
         }
         assertNoError(error);
         should.exist(result);
+        result.should.be.an('object');
+        Object.keys(result).should.have.same.members(['id']);
         result.id.should.equal(keyId);
       });
       it('successfully generates a AesKeyWrappingKey2019', async () => {
@@ -43,6 +65,8 @@ describe('bedrock-kms', () => {
         }
         assertNoError(error);
         should.exist(result);
+        result.should.be.an('object');
+        Object.keys(result).should.have.same.members(['id']);
         result.id.should.equal(keyId);
       });
       it('throws on UnknownKeyType', async () => {
@@ -64,6 +88,27 @@ describe('bedrock-kms', () => {
     }); // end GenerateKeyOperation
 
     describe('SignOperation', () => {
+      it('signs a string using Ed25519VerificationKey2018', async () => {
+        const {id: keyId} = await _generateKey(
+          {type: 'Ed25519VerificationKey2018'});
+        const operation = clone(mockData.operations.sign);
+        operation.invocationTarget = keyId;
+        operation.verifyData = uuid();
+        let result;
+        let error;
+        try {
+          result = await brKms.runOperation({operation});
+        } catch(e) {
+          error = e;
+        }
+        should.not.exist(error);
+        should.exist(result);
+        result.should.be.an('object');
+        Object.keys(result).should.have.same.members(['signatureValue']);
+        should.exist(result.signatureValue);
+        const {signatureValue} = result;
+        signatureValue.should.be.a('string');
+      });
       it('signs a string using Sha256HmacKey2019', async () => {
         const {id: keyId} = await _generateKey({type: 'Sha256HmacKey2019'});
         const operation = clone(mockData.operations.sign);
@@ -78,7 +123,8 @@ describe('bedrock-kms', () => {
         }
         should.not.exist(error);
         should.exist(result);
-        should.exist(result.signatureValue);
+        result.should.be.an('object');
+        Object.keys(result).should.have.same.members(['signatureValue']);
         const {signatureValue} = result;
         signatureValue.should.be.a('string');
         signatureValue.should.have.length(43);
@@ -107,6 +153,8 @@ describe('bedrock-kms', () => {
         }
         should.not.exist(error);
         should.exist(result);
+        result.should.be.an('object');
+        Object.keys(result).should.have.same.members(['verified']);
         result.verified.should.be.true;
       });
     }); // end VerifyOperation

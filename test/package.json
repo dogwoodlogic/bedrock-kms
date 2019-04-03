@@ -1,35 +1,18 @@
 {
   "name": "bedrock-kms-test",
   "version": "0.0.1-0",
-  "description": "Bedrock key management test",
+  "description": "Bedrock KMS test",
   "private": true,
-  "main": "./lib",
   "scripts": {
     "test": "node --preserve-symlinks test.js test"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/digitalbazaar/bedrock-kms"
-  },
-  "keywords": [
-    "bedrock"
-  ],
-  "author": {
-    "name": "Digital Bazaar, Inc.",
-    "email": "support@digitalbazaar.com",
-    "url": "http://digitalbazaar.com"
-  },
-  "bugs": {
-    "url": "https://github.com/digitalbazaar/bedrock-kms/issues"
-  },
-  "homepage": "https://github.com/digitalbazaar/bedrock-kms",
   "dependencies": {
     "bedrock": "^1.15.0",
     "bedrock-kms": "file:..",
     "bedrock-mongodb": "^5.5.0",
     "bedrock-package-manager": "^1.0.0",
     "bedrock-security-context": "^1.0.0",
-    "bedrock-ssm-mongodb": "github:digitalbazaar/bedrock-ssm-mongodb#initial",
+    "bedrock-ssm-mongodb": "^1.0.0",
     "bedrock-test": "^2.0.0"
   }
 }
