@@ -14,8 +14,9 @@ describe('bedrock-kms', () => {
   describe('runOperation API', () => {
     describe('GenerateKeyOperation', () => {
       it('successfully generates a Ed25519VerificationKey2018', async () => {
-        const keyId = `https://example.com/kms/ssm-v1/${uuid()}`;
+        const keyId = `https://example.com/kms/${uuid()}`;
         const operation = clone(mockData.operations.generate);
+        operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;
         operation.invocationTarget.type = 'Ed25519VerificationKey2018';
         let error;
@@ -34,8 +35,9 @@ describe('bedrock-kms', () => {
         result.publicKeyBase58.should.be.a('string');
       });
       it('successfully generates a Sha256HmacKey2019', async () => {
-        const keyId = `https://example.com/kms/ssm-v1/${uuid()}`;
+        const keyId = `https://example.com/kms/${uuid()}`;
         const operation = clone(mockData.operations.generate);
+        operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;
         operation.invocationTarget.type = 'Sha256HmacKey2019';
         let error;
@@ -52,8 +54,9 @@ describe('bedrock-kms', () => {
         result.id.should.equal(keyId);
       });
       it('successfully generates a AesKeyWrappingKey2019', async () => {
-        const keyId = `https://example.com/kms/ssm-v1/${uuid()}`;
+        const keyId = `https://example.com/kms/${uuid()}`;
         const operation = clone(mockData.operations.generate);
+        operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;
         operation.invocationTarget.type = 'AesKeyWrappingKey2019';
         let error;
@@ -70,8 +73,9 @@ describe('bedrock-kms', () => {
         result.id.should.equal(keyId);
       });
       it('throws on UnknownKeyType', async () => {
-        const keyId = `https://example.com/kms/ssm-v1/${uuid()}`;
+        const keyId = `https://example.com/kms/${uuid()}`;
         const operation = clone(mockData.operations.generate);
+        operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;
         operation.invocationTarget.type = 'UnknownKeyType';
         let error;
@@ -162,8 +166,9 @@ describe('bedrock-kms', () => {
 }); // end bedrock-kms
 
 async function _generateKey({type}) {
-  const keyId = `https://example.com/kms/ssm-v1/${uuid()}`;
+  const keyId = `https://example.com/kms/${uuid()}`;
   const operation = clone(mockData.operations.generate);
+  operation.kmsModule = 'ssm-v1';
   operation.invocationTarget.id = keyId;
   operation.invocationTarget.type = type;
   return brKms.runOperation({operation});
