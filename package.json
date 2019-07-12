@@ -24,7 +24,8 @@
     "bedrock": "^1.15.0",
     "bedrock-mongodb": "^5.5.0",
     "bedrock-package-manager": "^1.0.0",
-    "bedrock-security-context": "^1.0.0"
+    "bedrock-security-context": "^1.0.0",
+    "bedrock-zcap-storage": "digitalbazaar/bedrock-zcap-storage#initial"
   },
   "directories": {
     "lib": "./lib"
