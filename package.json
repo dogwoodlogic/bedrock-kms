@@ -36,6 +36,6 @@
   },
   "dependencies": {
     "bs58": "^4.0.1",
-    "web-kms-switch": "digitalbazaar/web-kms-switch#initial"
+    "web-kms-switch": "digitalbazaar/web-kms-switch#http-sig"
   }
 }
