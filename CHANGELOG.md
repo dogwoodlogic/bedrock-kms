@@ -1,5 +1,10 @@
 # bedrock-kms ChangeLog
 
+## 1.1.0 - 2020-01-22
+
+### Changed
+- Specify peer dep bedrock-security-context@3.
+
 ## 1.0.2 - 2020-01-22
 
 ### Fixed
