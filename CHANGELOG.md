@@ -1,5 +1,10 @@
 # bedrock-kms ChangeLog
 
+## 1.0.2 - 2020-01-22
+
+### Fixed
+- Add missing jsonld-sigatures dep.
+
 ## 1.0.1 - 2019-12-20
 
 ### Fixed
