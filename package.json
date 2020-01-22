@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "bs58": "^4.0.1",
+    "jsonld-signatures": "^4.6.0",
     "webkms-switch": "^1.0.0"
   }
 }
