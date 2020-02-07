@@ -1,5 +1,9 @@
 # bedrock-kms ChangeLog
 
+### Added
+- Add support for `inspectCapabilityChain` handler in `validateOperation`. This
+  handler can be used to check for revocations in a capability chain.
+
 ## 1.1.0 - 2020-01-22
 
 ### Changed
