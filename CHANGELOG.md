@@ -1,8 +1,11 @@
 # bedrock-kms ChangeLog
 
+## 1.2.0 - 2020-02-07
+
 ### Added
 - Add support for `inspectCapabilityChain` handler in `validateOperation`. This
   handler can be used to check for revocations in a capability chain.
+- Handle reading DID key URLs (with `#`) in document loader.
 
 ## 1.1.0 - 2020-01-22
 
