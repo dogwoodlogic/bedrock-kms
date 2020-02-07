@@ -1,6 +1,6 @@
 {
   "name": "bedrock-kms",
-  "version": "1.2.0",
+  "version": "1.2.1-0",
   "description": "Key management for Bedrock applications",
   "main": "./lib",
   "scripts": {},
