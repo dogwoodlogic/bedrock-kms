@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 1.3.0 - 2020-02-xx
+## 1.3.0 - 2020-02-14
 
 ### Changed
 - Use jsonld-signatures@5.
