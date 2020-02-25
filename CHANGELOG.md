@@ -1,5 +1,12 @@
 # bedrock-kms ChangeLog
 
+## 1.4.0 - 2020-02-25
+
+### Changed
+- Add dependency for `did-key-method`.
+- Add peer dependency for `bedrock-did-context`.
+- Add peer dependency for `bedrock-jsonld-document-loader`.
+
 ## 1.3.0 - 2020-02-14
 
 ### Changed
