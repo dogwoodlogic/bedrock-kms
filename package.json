@@ -22,6 +22,8 @@
   "homepage": "https://github.com/digitalbazaar/bedrock-kms",
   "peerDependencies": {
     "bedrock": "^3.0.1",
+    "bedrock-did-context": "^1.0.0",
+    "bedrock-jsonld-document-loader": "^1.0.1",
     "bedrock-mongodb": "^6.0.2",
     "bedrock-package-manager": "^1.0.0",
     "bedrock-security-context": "^3.0.0",
