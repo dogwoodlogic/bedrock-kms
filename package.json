@@ -23,7 +23,7 @@
   "dependencies": {
     "did-method-key": "^0.5.0",
     "jsonld-signatures": "^5.0.0",
-    "webkms-switch": "digitalbazaar/webkms-switch#ocapld-next"
+    "webkms-switch": "^2.0.0"
   },
   "peerDependencies": {
     "bedrock": "^3.0.1",
