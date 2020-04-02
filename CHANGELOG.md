@@ -1,5 +1,11 @@
 # bedrock-kms ChangeLog
 
+## 2.0.0 - 2020-04-02
+
+### Changed
+- **BREAKING**: Use webkms-switch@2.
+- Remove unused peer deps.
+
 ## 1.4.0 - 2020-02-25
 
 ### Changed
