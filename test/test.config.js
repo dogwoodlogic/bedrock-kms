@@ -13,3 +13,5 @@ config.mongodb.name = 'bedrock_kms_test';
 config.mongodb.dropCollections = {};
 config.mongodb.dropCollections.onInit = true;
 config.mongodb.dropCollections.collections = [];
+
+config.kms.allowedHost = 'localhost';

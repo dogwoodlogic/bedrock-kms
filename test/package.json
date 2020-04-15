@@ -4,17 +4,31 @@
   "description": "Bedrock KMS test",
   "private": true,
   "scripts": {
-    "test": "node --preserve-symlinks test.js test"
+    "test": "node --preserve-symlinks test.js test",
+    "coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-summary npm test",
+    "coverage-ci": "cross-env NODE_ENV=test nyc --reporter=text-lcov npm test > coverage.lcov",
+    "coverage-report": "nyc report"
   },
   "dependencies": {
-    "bedrock": "^1.15.0",
+    "bedrock": "^3.0.0",
     "bedrock-did-context": "^1.0.0",
     "bedrock-jsonld-document-loader": "^1.0.1",
     "bedrock-kms": "file:..",
-    "bedrock-mongodb": "^5.5.0",
+    "bedrock-mongodb": "^6.0.0",
     "bedrock-package-manager": "^1.0.0",
-    "bedrock-security-context": "^1.0.0",
+    "bedrock-security-context": "^3.0.0",
     "bedrock-ssm-mongodb": "^2.0.1",
-    "bedrock-test": "^2.0.0"
+    "bedrock-test": "^5.0.0",
+    "cross-env": "^7.0.2",
+    "nyc": "^15.0.1"
+  },
+  "nyc": {
+    "excludeNodeModules": false,
+    "include": [
+      "node_modules/bedrock-kms/**"
+    ],
+    "exclude": [
+      "node_modules/bedrock-kms/node_modules/**"
+    ]
   }
 }
