@@ -3,8 +3,5 @@
  */
 'use strict';
 
-const brKms = require('bedrock-kms');
-const {promisify} = require('util');
-
 const api = {};
 module.exports = api;
