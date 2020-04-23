@@ -23,22 +23,24 @@
   },
   "homepage": "https://github.com/digitalbazaar/bedrock-kms",
   "dependencies": {
-    "did-method-key": "^0.5.0",
-    "jsonld-signatures": "^5.0.0",
+    "did-io": "^0.8.0",
+    "did-method-key": "^0.6.1",
+    "did-veres-one": "^12.1.0",
+    "jsonld-signatures": "^5.0.1",
     "webkms-switch": "^2.0.0"
   },
   "peerDependencies": {
-    "bedrock": "^3.0.1",
+    "bedrock": "^3.1.0",
     "bedrock-did-context": "^1.0.0",
     "bedrock-jsonld-document-loader": "^1.0.1",
     "bedrock-mongodb": "^6.0.2",
-    "bedrock-package-manager": "^1.0.0"
+    "bedrock-package-manager": "^1.0.1"
   },
   "directories": {
     "lib": "./lib"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-config-digitalbazaar": "^2.0.0"
+    "eslint-config-digitalbazaar": "^2.3.0"
   }
 }
