@@ -25,7 +25,7 @@
   "dependencies": {
     "did-io": "^0.8.0",
     "did-method-key": "^0.6.1",
-    "did-veres-one": "^12.1.0",
+    "did-veres-one": "veres-one/did-veres-one#support-v1",
     "jsonld-signatures": "^5.0.1",
     "webkms-switch": "^2.0.0"
   },
