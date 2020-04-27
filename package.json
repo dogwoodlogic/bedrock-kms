@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/digitalbazaar/bedrock-kms",
   "dependencies": {
-    "did-io": "^0.8.0",
+    "did-io": "digitalbazaar/did-io#support-v1",
     "did-method-key": "^0.6.1",
     "did-veres-one": "veres-one/did-veres-one#support-v1",
     "jsonld-signatures": "^5.0.1",
