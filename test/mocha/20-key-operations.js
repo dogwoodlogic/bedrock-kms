@@ -5,17 +5,16 @@
 
 const brKms = require('bedrock-kms');
 const {util: {clone, uuid}} = require('bedrock');
-// const helpers = require('./helpers');
+const helpers = require('./helpers');
 const mockData = require('./mock.data');
 
-// FIXME: the test suite is failing due to invalid key ID errors
-describe.skip('bedrock-kms', () => {
+describe('bedrock-kms', () => {
   before(async () => {});
 
   describe('runOperation API', () => {
     describe('GenerateKeyOperation', () => {
       it('successfully generates a Ed25519VerificationKey2018', async () => {
-        const keyId = `https://example.com/kms/${uuid()}`;
+        const keyId = `https://example.com/keystore/x/keys/e1d40821`;
         const operation = clone(mockData.operations.generate);
         operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;
@@ -36,7 +35,7 @@ describe.skip('bedrock-kms', () => {
         result.publicKeyBase58.should.be.a('string');
       });
       it('successfully generates a Sha256HmacKey2019', async () => {
-        const keyId = `https://example.com/kms/${uuid()}`;
+        const keyId = `https://example.com/keystore/x/keys/2adfef65`;
         const operation = clone(mockData.operations.generate);
         operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;
@@ -51,11 +50,12 @@ describe.skip('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        Object.keys(result).should.have.same.members(['id']);
+        Object.keys(result).should.have.same.members(
+          ['@context', 'id', 'type']);
         result.id.should.equal(keyId);
       });
       it('successfully generates a AesKeyWrappingKey2019', async () => {
-        const keyId = `https://example.com/kms/${uuid()}`;
+        const keyId = `https://example.com/keystore/x/keys/a8b26a4c`;
         const operation = clone(mockData.operations.generate);
         operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;
@@ -70,11 +70,12 @@ describe.skip('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        Object.keys(result).should.have.same.members(['id']);
+        Object.keys(result).should.have.same.members(
+          ['@context', 'id', 'type']);
         result.id.should.equal(keyId);
       });
       it('throws on UnknownKeyType', async () => {
-        const keyId = `https://example.com/kms/${uuid()}`;
+        const keyId = `https://example.com/keystore/x/keys/44b2d099`;
         const operation = clone(mockData.operations.generate);
         operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;
@@ -94,8 +95,8 @@ describe.skip('bedrock-kms', () => {
 
     describe('SignOperation', () => {
       it('signs a string using Ed25519VerificationKey2018', async () => {
-        const {id: keyId} = await _generateKey(
-          {type: 'Ed25519VerificationKey2018'});
+        const {id: keyId} = await helpers.generateKey(
+          {mockData, type: 'Ed25519VerificationKey2018'});
         const operation = clone(mockData.operations.sign);
         operation.invocationTarget = keyId;
         operation.verifyData = uuid();
@@ -106,7 +107,7 @@ describe.skip('bedrock-kms', () => {
         } catch(e) {
           error = e;
         }
-        should.not.exist(error);
+        assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
         Object.keys(result).should.have.same.members(['signatureValue']);
@@ -115,7 +116,8 @@ describe.skip('bedrock-kms', () => {
         signatureValue.should.be.a('string');
       });
       it('signs a string using Sha256HmacKey2019', async () => {
-        const {id: keyId} = await _generateKey({type: 'Sha256HmacKey2019'});
+        const {id: keyId} = await helpers.generateKey(
+          {mockData, type: 'Sha256HmacKey2019'});
         const operation = clone(mockData.operations.sign);
         operation.invocationTarget = keyId;
         operation.verifyData = uuid();
@@ -126,7 +128,7 @@ describe.skip('bedrock-kms', () => {
         } catch(e) {
           error = e;
         }
-        should.not.exist(error);
+        assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
         Object.keys(result).should.have.same.members(['signatureValue']);
@@ -139,7 +141,8 @@ describe.skip('bedrock-kms', () => {
     describe('VerifyOperation', () => {
       it('verifies a string using Sha256HmacKey2019', async () => {
         const verifyData = uuid();
-        const {id: keyId} = await _generateKey({type: 'Sha256HmacKey2019'});
+        const {id: keyId} = await helpers.generateKey(
+          {mockData, type: 'Sha256HmacKey2019'});
         const signOperation = clone(mockData.operations.sign);
         signOperation.invocationTarget = keyId;
         signOperation.verifyData = verifyData;
@@ -156,7 +159,7 @@ describe.skip('bedrock-kms', () => {
         } catch(e) {
           error = e;
         }
-        should.not.exist(error);
+        assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
         Object.keys(result).should.have.same.members(['verified']);
@@ -165,12 +168,3 @@ describe.skip('bedrock-kms', () => {
     }); // end VerifyOperation
   }); // end runOperation API
 }); // end bedrock-kms
-
-async function _generateKey({type}) {
-  const keyId = `https://example.com/kms/${uuid()}`;
-  const operation = clone(mockData.operations.generate);
-  operation.kmsModule = 'ssm-v1';
-  operation.invocationTarget.id = keyId;
-  operation.invocationTarget.type = type;
-  return brKms.runOperation({operation});
-}
