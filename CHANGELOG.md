@@ -1,5 +1,10 @@
 # bedrock-kms ChangeLog
 
+## 2.0.1 - 2020-05-06
+
+### Fixed
+- Fix error handling in `keystore.update` API.
+
 ## 2.0.0 - 2020-04-02
 
 ### Changed
