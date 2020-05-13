@@ -291,5 +291,22 @@ describe('keystores APIs', () => {
       should.exist(err);
       err.name.should.equal('InvalidStateError');
     });
+    it('throws error if config-fields other than id, controller or sequence',
+      async () => {
+        let err;
+        let result;
+        const config = clone(mockConfigBeta);
+        config.sequence++;
+        config.id = 'someOtherId';
+        config.someKey = 'not id, controller or sequence';
+        try {
+          result = await keystores.update({config});
+        } catch(e) {
+          err = e;
+        }
+        should.not.exist(result);
+        should.exist(err);
+        err.name.should.equal('DataError');
+      });
   });
 });
