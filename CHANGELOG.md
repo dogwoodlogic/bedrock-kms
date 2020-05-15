@@ -1,5 +1,12 @@
 # bedrock-kms ChangeLog
 
+## 2.1.0 - 2020-05-15
+
+### Changed
+- Add support for `did:v1` resolution.
+- Add dependency for `did-io`.
+- Add dependency for `did-veres-one`.
+
 ## 2.0.1 - 2020-05-06
 
 ### Fixed
