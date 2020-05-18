@@ -11,6 +11,7 @@ describe('keystores APIs', () => {
     id: 'b122cc8a-39be-4680-b88e-2593b1295b1b',
     controller: '8a945a10-9f6a-4096-8306-c6c6825a9fe2',
     sequence: 0,
+    referenceId: '95901c02-a4ad-4d3a-be17-0be3aafbe6f3',
   };
   const mockConfigBeta = {
     id: 'f454ad49-90eb-4f15-aff9-13048adc84d0',
@@ -22,6 +23,7 @@ describe('keystores APIs', () => {
     controller: 'f2da13ee-50d2-46ab-865d-ee23d609edbd',
     sequence: 0,
   };
+
   before(async () => {
     let err;
     try {
@@ -195,6 +197,28 @@ describe('keystores APIs', () => {
       should.exist(err);
       err.message.should.contain('config.controller (string) is required');
     });
+    it('throws error on non-string config.referenceId', async () => {
+      const testReferenceIds = [1, false, {}, []];
+      for(let index = 0; index < testReferenceIds.length; index++) {
+        const referenceId = testReferenceIds[index];
+        let err;
+        let result;
+        const config = {
+          id: 'foo',
+          controller: '1',
+          sequence: 1,
+          referenceId
+        };
+        try {
+          result = await keystores.update({config});
+        } catch(e) {
+          err = e;
+        }
+        should.not.exist(result);
+        should.exist(err);
+        err.message.should.contain('config.referenceId (string) is required');
+      }
+    });
     it('successfully updates a keystore', async () => {
       let err;
       let result;
@@ -291,22 +315,20 @@ describe('keystores APIs', () => {
       should.exist(err);
       err.name.should.equal('InvalidStateError');
     });
-    it('throws error if config-fields other than id, controller, or sequence',
-      async () => {
-        let err;
-        let result;
-        const config = clone(mockConfigBeta);
-        config.sequence++;
-        config.id = 'someOtherId';
-        config.someKey = 'not id, controller, or sequence';
-        try {
-          result = await keystores.update({config});
-        } catch(e) {
-          err = e;
-        }
-        should.not.exist(result);
-        should.exist(err);
-        err.name.should.equal('DataError');
-      });
+    it('throws error if config-fields other than id, controller, sequence or' +
+    'referenceId', async () => {
+      let err;
+      let result;
+      const config = clone(mockConfigBeta);
+      config.someKey = 'not id, controller, sequence or referenceId';
+      try {
+        result = await keystores.update({config});
+      } catch(e) {
+        err = e;
+      }
+      should.not.exist(result);
+      should.exist(err);
+      err.name.should.equal('DataError');
+    });
   });
 });
