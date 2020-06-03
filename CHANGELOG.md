@@ -1,5 +1,14 @@
 # bedrock-kms ChangeLog
 
+## 2.2.0 -
+
+### Changed
+- Mongodb `update` is now `updateOne`.
+- Mongodb `find` no longer accepts fields.
+
+### Added
+- `find` now throws in both options.projection and fields are set.
+
 ## 2.1.0 - 2020-05-15
 
 ### Changed
