@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 3.0.1 -
+## 3.0.1 - 2020-06-09
 
 ## Added
 - Add `delegator` and `invoker` as valid kms config properties.
