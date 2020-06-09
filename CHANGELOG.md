@@ -1,8 +1,9 @@
 # bedrock-kms ChangeLog
 
-## 2.2.0 -
+## 3.0.0 -
 
 ### Changed
+- **BREAKING**: Upgraded to `bedrock-mongodb` ^7.0.0.
 - Mongodb `update` is now `updateOne`.
 - Mongodb `find` no longer accepts fields.
 

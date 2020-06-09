@@ -18,7 +18,7 @@
     "bedrock-ledger-context": "^14.0.0",
     "bedrock-package-manager": "^1.0.1",
     "bedrock-security-context": "^3.0.0",
-    "bedrock-ssm-mongodb": "digitalbazaar/bedrock-ssm-mongodb#mongo-version-3",
+    "bedrock-ssm-mongodb": "^3.0.0",
     "bedrock-veres-one-context": "^10.0.0",
     "bedrock-test": "^5.2.0",
     "cross-env": "^7.0.2",
