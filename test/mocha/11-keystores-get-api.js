@@ -56,13 +56,13 @@ describe('keystores APIs', () => {
       assertNoError(err);
       should.exist(result);
       result.should.be.an('object');
-      result.should.have.property('meta');
+      // ensure the projection only return meta & config
+      Object.keys(result).should.deep.equal(['meta', 'config']);
       result.meta.should.have.property('created');
       result.meta.should.have.property('updated');
-      result.should.have.property('config');
       result.config.should.eql(mockConfig);
     });
-    it('successfully gets a keystore', async () => {
+    it('unsuccessfully gets a keystore', async () => {
       const unknownId = 'bd9a90e3-2989-4d40-81c6-94ad0c98c56c';
       let err;
       let result;
