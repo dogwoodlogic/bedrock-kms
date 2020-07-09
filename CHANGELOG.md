@@ -1,5 +1,10 @@
 # bedrock-kms ChangeLog
 
+## 3.0.2 - 2020-07-09
+
+## Fixed
+- Fix usage of MongoDB projection API.
+
 ## 3.0.1 - 2020-06-09
 
 ## Added
