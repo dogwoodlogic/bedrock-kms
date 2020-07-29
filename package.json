@@ -27,6 +27,7 @@
     "did-method-key": "digitalbazaar/did-method-key-js#async-keyToDidDoc",
     "did-veres-one": "^12.1.1",
     "jsonld-signatures": "^5.0.1",
+    "lru-cache": "^6.0.0",
     "webkms-switch": "^2.0.0"
   },
   "peerDependencies": {
