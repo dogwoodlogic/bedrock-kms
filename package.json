@@ -24,7 +24,7 @@
   "homepage": "https://github.com/digitalbazaar/bedrock-kms",
   "dependencies": {
     "did-io": "^0.8.2",
-    "did-method-key": "digitalbazaar/did-method-key.js#async-keyToDidDoc",
+    "did-method-key": "digitalbazaar/did-method-key#async-keyToDidDoc",
     "did-veres-one": "^12.1.1",
     "jsonld-signatures": "^5.0.1",
     "webkms-switch": "^2.0.0"
