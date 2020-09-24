@@ -14,7 +14,7 @@ describe('bedrock-kms', () => {
   describe('runOperation API', () => {
     describe('GenerateKeyOperation', () => {
       it('successfully generates a Ed25519VerificationKey2018', async () => {
-        const keyId = `https://example.com/keystore/x/keys/e1d40821`;
+        const keyId = `https://example.com/keystores/x/keys/e1d40821`;
         const operation = clone(mockData.operations.generate);
         operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;
@@ -35,7 +35,7 @@ describe('bedrock-kms', () => {
         result.publicKeyBase58.should.be.a('string');
       });
       it('successfully generates a Sha256HmacKey2019', async () => {
-        const keyId = `https://example.com/keystore/x/keys/2adfef65`;
+        const keyId = `https://example.com/keystores/x/keys/2adfef65`;
         const operation = clone(mockData.operations.generate);
         operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;
@@ -55,7 +55,7 @@ describe('bedrock-kms', () => {
         result.id.should.equal(keyId);
       });
       it('successfully generates a AesKeyWrappingKey2019', async () => {
-        const keyId = `https://example.com/keystore/x/keys/a8b26a4c`;
+        const keyId = `https://example.com/keystores/x/keys/a8b26a4c`;
         const operation = clone(mockData.operations.generate);
         operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;
@@ -75,7 +75,7 @@ describe('bedrock-kms', () => {
         result.id.should.equal(keyId);
       });
       it('throws on UnknownKeyType', async () => {
-        const keyId = `https://example.com/keystore/x/keys/44b2d099`;
+        const keyId = `https://example.com/keystores/x/keys/44b2d099`;
         const operation = clone(mockData.operations.generate);
         operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;

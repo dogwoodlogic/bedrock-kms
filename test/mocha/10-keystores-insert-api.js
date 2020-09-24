@@ -36,7 +36,7 @@ describe('keystores APIs', () => {
       let err;
       let result;
       const config = {
-        id: 'foo',
+        id: 'https://example.com/keystores/foo',
       };
       try {
         result = await keystores.insert({config});
@@ -51,7 +51,7 @@ describe('keystores APIs', () => {
       let err;
       let result;
       const config = {
-        id: 'foo',
+        id: 'https://example.com/keystores/foo',
         controller: 'bar',
       };
       try {
@@ -67,7 +67,7 @@ describe('keystores APIs', () => {
       let err;
       let result;
       const config = {
-        id: 'foo',
+        id: 'https://example.com/keystores/foo',
         controller: 'bar',
         sequence: -1,
       };
@@ -84,7 +84,7 @@ describe('keystores APIs', () => {
       let err;
       let result;
       const config = {
-        id: 'foo',
+        id: 'https://example.com/keystores/foo',
         controller: 'bar',
         sequence: 1.1,
       };
@@ -101,7 +101,7 @@ describe('keystores APIs', () => {
       let err;
       let result;
       const config = {
-        id: 'foo',
+        id: 'https://example.com/keystores/foo',
         controller: 'bar',
         sequence: 1,
       };
@@ -118,7 +118,7 @@ describe('keystores APIs', () => {
       let err;
       let result;
       const config = {
-        id: 'foo',
+        id: 'https://example.com/keystores/foo',
         controller: 'bar',
         sequence: '0',
       };
@@ -152,7 +152,7 @@ describe('keystores APIs', () => {
       let err;
       let result;
       const config = {
-        id: 'foo',
+        id: 'https://example.com/keystores/foo',
         controller: 1,
         sequence: '0',
       };
@@ -169,7 +169,7 @@ describe('keystores APIs', () => {
       let err;
       let result;
       const config = {
-        id: 'foo',
+        id: 'https://example.com/keystores/foo',
         controller: 'bar',
         sequence: 0,
       };
@@ -188,7 +188,8 @@ describe('keystores APIs', () => {
       let err;
       let result;
       const config = {
-        id: 'fbea027c-ecc4-4562-b3dc-392db7b7c7c6',
+        id:
+          'https://example.com/keystores/fbea027c-ecc4-4562-b3dc-392db7b7c7c6',
         controller: 'bar',
         sequence: 0,
       };

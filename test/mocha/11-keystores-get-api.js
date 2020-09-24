@@ -7,7 +7,7 @@ const {keystores} = require('bedrock-kms');
 
 describe('keystores APIs', () => {
   const mockConfig = {
-    id: '0ea64f2a-06db-4055-93a5-c2f305cd541d',
+    id: 'https://example.com/keystores/se0ea64f2a-06db-4055-93a5-c2f305cd541d',
     controller: '1e65ba0c-966e-440c-bd72-e4b97caeb7f3',
     sequence: 0,
   };

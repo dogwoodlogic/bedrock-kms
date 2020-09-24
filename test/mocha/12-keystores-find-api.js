@@ -7,18 +7,18 @@ const {keystores} = require('bedrock-kms');
 
 describe('keystores APIs', () => {
   const mockConfigAlpha = {
-    id: '8b688649-d546-4e88-9027-da434bac495a',
+    id: 'https://example.com/keystores/8b688649-d546-4e88-9027-da434bac495a',
     controller: 'caf40b44-0e66-44ef-b331-23f6ca0bb837',
     sequence: 0,
   };
   // mockConfigBeta one and two have the same controller
   const mockConfigBeta1 = {
-    id: '6821b4ec-2630-4bf3-9464-39581d2c4499',
+    id: 'https://example.com/keystores/6821b4ec-2630-4bf3-9464-39581d2c4499',
     controller: '8a86d089-3a48-4096-a5a3-b874e873fb60',
     sequence: 0,
   };
   const mockConfigBeta2 = {
-    id: '448cf4ad-e9ff-4bd3-aa9a-b882cd01583c',
+    id: 'https://example.com/keystores/448cf4ad-e9ff-4bd3-aa9a-b882cd01583c',
     controller: '8a86d089-3a48-4096-a5a3-b874e873fb60',
     sequence: 0,
   };
