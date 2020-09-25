@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 3.1.0 - 2020-09-xx
+## 3.1.0 - 2020-09-25
 
 ## Added
 - Add cache for public key records.
