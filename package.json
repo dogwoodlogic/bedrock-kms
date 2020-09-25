@@ -4,7 +4,7 @@
   "description": "Key management for Bedrock applications",
   "main": "./lib",
   "scripts": {
-    "lint": "eslint lib test"
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
