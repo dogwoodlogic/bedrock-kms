@@ -1,5 +1,17 @@
 # bedrock-kms ChangeLog
 
+## 4.0.0 - TBD
+
+### Added
+- Keystore configurations may now include an optional `ipAllowList` array. If
+  specified, the KMS system will only execute requests originating from IPs
+  listed in `ipAllowList`. This applies to key operations for all keys in the
+  keystore as well as modification of the configuration itself.
+
+### Changed
+- **BREAKING**: Change data model and validation of keystore configs. Configs
+  no longer include `invoker` or `delegator` properties.
+
 ## 3.1.0 - 2020-09-25
 
 ## Added
