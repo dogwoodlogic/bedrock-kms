@@ -1,5 +1,10 @@
 # bedrock-kms ChangeLog
 
+## 4.0.1 - 2021-03-09
+
+### Fixed
+- Remove obsolete `allowedHost` config.
+
 ## 4.0.0 - 2021-03-09
 
 ### Added
