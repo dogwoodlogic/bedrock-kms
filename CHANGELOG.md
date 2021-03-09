@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 4.0.0 - TBD
+## 4.0.0 - 2021-03-09
 
 ### Added
 - Keystore configurations may now include an optional `ipAllowList` array. If
