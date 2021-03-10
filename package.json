@@ -26,7 +26,8 @@
     "did-io": "^0.8.2",
     "did-method-key": "^0.7.0",
     "did-veres-one": "^12.1.1",
-    "jsonld-signatures": "^7.0.0",
+    "@digitalbazaar/ed25519-signature-2018": "github:digitalbazaar/@digitalbazaar/ed25519-signature-2018#initial",
+    "@digitalbazaar/ed25519-signature-2020": "github:digitalbazaar/@digitalbazaar/ed25519-signature-2020#initial",
     "lru-cache": "^6.0.0",
     "webkms-switch": "^3.0.0"
   },
