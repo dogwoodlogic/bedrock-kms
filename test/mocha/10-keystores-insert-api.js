@@ -184,7 +184,7 @@ describe('keystores APIs', () => {
       result.should.have.property('config');
       result.config.should.eql(config);
     });
-    it('throws on a duplicate keystore config', async () => {
+    it('throws DuplicateError on duplicate keystore config', async () => {
       let err;
       let result;
       const config = {
@@ -208,6 +208,43 @@ describe('keystores APIs', () => {
         err = e;
       }
       should.exist(err);
+      err.name.should.equal('DuplicateError');
     });
+    it('throws DuplicateError on config with same controller and referenceId',
+      async () => {
+        // configs have unique IDs, but the same controller and referenceId
+        let err;
+        let result;
+        const keystoreConfig1 = {
+          id: 'https://example.com/keystores/fbea027c',
+          controller: 'bar',
+          referenceId: 'urn:uuid:72b89236-7bb7-4d00-8930-9c74c4a7a4a8',
+          sequence: 0,
+        };
+        try {
+          result = await keystores.insert({config: keystoreConfig1});
+        } catch(e) {
+          err = e;
+        }
+        assertNoError(err);
+        should.exist(result);
+
+        const keystoreConfig2 = {
+          id: 'https://example.com/keystores/4f398f8f',
+          controller: 'bar',
+          referenceId: 'urn:uuid:72b89236-7bb7-4d00-8930-9c74c4a7a4a8',
+          sequence: 0,
+        };
+
+        result = undefined;
+        err = undefined;
+        try {
+          result = await keystores.insert({config: keystoreConfig2});
+        } catch(e) {
+          err = e;
+        }
+        should.exist(err);
+        err.name.should.equal('DuplicateError');
+      });
   }); // end insert API
 }); // end keystore APIs
