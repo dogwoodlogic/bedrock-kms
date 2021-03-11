@@ -1,5 +1,14 @@
 # bedrock-kms ChangeLog
 
+## 5.0.0 - 2021-03-11
+
+### Fixed
+- **BREAKING**: Fix incorrectly configured MongoDB index on the `kmsKeystore`
+  collection. If this software needs to be deployed along with an existing
+  database, the index named `controller_1_config.referenceId_1` will need to
+  be dropped manually. The index will be recreated automatically on Bedrock
+  application startup.
+
 ## 4.0.1 - 2021-03-09
 
 ### Fixed
