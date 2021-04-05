@@ -4,7 +4,11 @@
 
 ### Changed
 - **BREAKING**: Drop support for node 10.
-- Use `ed25519-signature-2020` signature suite instead of `ed25519-signature-2018`.
+- Support both `ed25519-signature-2020` and `ed25519-signature-2018` signature suites. `ed25519-signature-2020` is backwards compatible.
+- Update dependencies to latest:
+  [@digitalbazaar/did-io](https://github.com/digitalbazaar/did-io/pull/50),
+  [@digitalbazaar/did-method-key](https://github.com/digitalbazaar/did-method-key-js/pull/35),
+  [webkms-switch](https://github.com/digitalbazaar/webkms-switch/pull/9).
 
 ## 5.0.0 - 2021-03-11
 
