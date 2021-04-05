@@ -1,5 +1,11 @@
 # bedrock-kms ChangeLog
 
+## 6.0.0 - 2021-04-TBD
+
+### Changed
+- **BREAKING**: Support `ed25519-signature-2020` signature suite.
+- Drop support for node 10.
+
 ## 5.0.0 - 2021-03-11
 
 ### Fixed
