@@ -4,7 +4,7 @@
 
 ### Changed
 - **BREAKING**: Drop support for node 10.
-- Support `ed25519-signature-2020` signature suite.
+- Use `ed25519-signature-2020` signature suite instead of `ed25519-signature-2018`.
 
 ## 5.0.0 - 2021-03-11
 
