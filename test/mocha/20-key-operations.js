@@ -34,6 +34,27 @@ describe('bedrock-kms', () => {
         result.type.should.equal(operation.invocationTarget.type);
         result.publicKeyBase58.should.be.a('string');
       });
+      it('successfully generates a Ed25519VerificationKey2020', async () => {
+        const keyId = `https://example.com/keystores/x/keys/e1d40823`;
+        const operation = clone(mockData.operations.generate);
+        operation.kmsModule = 'ssm-v1';
+        operation.invocationTarget.id = keyId;
+        operation.invocationTarget.type = 'Ed25519VerificationKey2020';
+        let error;
+        let result;
+        try {
+          result = await brKms.runOperation({operation});
+        } catch(e) {
+          error = e;
+        }
+        assertNoError(error);
+        should.exist(result);
+        Object.keys(result).should.have.same.members(
+          ['id', 'publicKeyMultibase', 'type']);
+        result.id.should.equal(keyId);
+        result.type.should.equal(operation.invocationTarget.type);
+        result.publicKeyMultibase.should.be.a('string');
+      });
       it('successfully generates a Sha256HmacKey2019', async () => {
         const keyId = `https://example.com/keystores/x/keys/2adfef65`;
         const operation = clone(mockData.operations.generate);
@@ -97,6 +118,27 @@ describe('bedrock-kms', () => {
       it('signs a string using Ed25519VerificationKey2018', async () => {
         const {id: keyId} = await helpers.generateKey(
           {mockData, type: 'Ed25519VerificationKey2018'});
+        const operation = clone(mockData.operations.sign);
+        operation.invocationTarget = keyId;
+        operation.verifyData = uuid();
+        let result;
+        let error;
+        try {
+          result = await brKms.runOperation({operation});
+        } catch(e) {
+          error = e;
+        }
+        assertNoError(error);
+        should.exist(result);
+        result.should.be.an('object');
+        Object.keys(result).should.have.same.members(['signatureValue']);
+        should.exist(result.signatureValue);
+        const {signatureValue} = result;
+        signatureValue.should.be.a('string');
+      });
+      it('signs a string using Ed25519VerificationKey2020', async () => {
+        const {id: keyId} = await helpers.generateKey(
+          {mockData, type: 'Ed25519VerificationKey2020'});
         const operation = clone(mockData.operations.sign);
         operation.invocationTarget = keyId;
         operation.verifyData = uuid();
