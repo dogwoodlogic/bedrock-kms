@@ -24,7 +24,7 @@
   "homepage": "https://github.com/digitalbazaar/bedrock-kms",
   "dependencies": {
     "@digitalbazaar/ed25519-signature-2020": "^2.0.0",
-    "@digitalbazaar/did-io": "^1.0.0",
+    "bedrock-did-io": "digitalbazaar/bedrock-did-io#initial",
     "@digitalbazaar/did-method-key": "digitalbazaar/did-method-key-js#v1.x",
     "did-veres-one": "^13.0.0",
     "lru-cache": "^6.0.0",
