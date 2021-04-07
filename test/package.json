@@ -20,9 +20,9 @@
     "bedrock-security-context": "^4.0.0",
     "bedrock-ssm-mongodb": "digitalbazaar/bedrock-ssm-mongodb#add-ed25519-verification-key-2020",
     "bedrock-veres-one-context": "^10.0.1",
-    "bedrock-test": "^5.2.0",
-    "cross-env": "^7.0.2",
-    "nyc": "^15.0.1"
+    "bedrock-test": "^5.3.2",
+    "cross-env": "^7.0.3",
+    "nyc": "^15.1.0"
   },
   "nyc": {
     "excludeNodeModules": false,
