@@ -7,9 +7,9 @@
 - Support `ed25519-signature-2020` signature suite.
 - Remove use of `jsonld-signatures`.
 - Remove `@digitalbazaar/did-io` and use `bedrock-did-io`.
+- Remove `did-method-key`.
 - Update dependencies to latest:
   [bedrock-did-io@1.0](https://github.com/digitalbazaar/bedrock-did-io/pull/2),
-  [@digitalbazaar/did-method-key@1.0](https://github.com/digitalbazaar/did-method-key-js/pull/35),
   [webkms-switch@4.0](https://github.com/digitalbazaar/webkms-switch/pull/9).
 
 ## 5.0.0 - 2021-03-11
