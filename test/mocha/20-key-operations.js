@@ -28,8 +28,7 @@ describe('bedrock-kms', () => {
         }
         assertNoError(error);
         should.exist(result);
-        Object.keys(result).should.have.same.members(
-          ['id', 'publicKeyBase58', 'type']);
+        result.should.have.keys(['id', 'publicKeyBase58', 'type']);
         result.id.should.equal(keyId);
         result.type.should.equal(operation.invocationTarget.type);
         result.publicKeyBase58.should.be.a('string');
@@ -49,8 +48,7 @@ describe('bedrock-kms', () => {
         }
         assertNoError(error);
         should.exist(result);
-        Object.keys(result).should.have.same.members(
-          ['id', 'publicKeyMultibase', 'type']);
+        result.should.have.keys(['id', 'publicKeyMultibase', 'type']);
         result.id.should.equal(keyId);
         result.type.should.equal(operation.invocationTarget.type);
         result.publicKeyMultibase.should.be.a('string');
@@ -71,8 +69,7 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        Object.keys(result).should.have.same.members(
-          ['@context', 'id', 'type']);
+        result.should.have.keys(['@context', 'id', 'type']);
         result.id.should.equal(keyId);
       });
       it('successfully generates a AesKeyWrappingKey2019', async () => {
@@ -91,8 +88,7 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        Object.keys(result).should.have.same.members(
-          ['@context', 'id', 'type']);
+        result.should.have.keys(['@context', 'id', 'type']);
         result.id.should.equal(keyId);
       });
       it('throws on UnknownKeyType', async () => {
@@ -131,7 +127,7 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        Object.keys(result).should.have.same.members(['signatureValue']);
+        result.should.have.keys(['signatureValue']);
         should.exist(result.signatureValue);
         const {signatureValue} = result;
         signatureValue.should.be.a('string');
@@ -152,7 +148,7 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        Object.keys(result).should.have.same.members(['signatureValue']);
+        result.should.have.keys(['signatureValue']);
         should.exist(result.signatureValue);
         const {signatureValue} = result;
         signatureValue.should.be.a('string');
@@ -173,7 +169,7 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        Object.keys(result).should.have.same.members(['signatureValue']);
+        result.should.have.keys(['signatureValue']);
         const {signatureValue} = result;
         signatureValue.should.be.a('string');
         signatureValue.should.have.length(43);
@@ -204,7 +200,7 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        Object.keys(result).should.have.same.members(['verified']);
+        result.should.have.keys(['verified']);
         result.verified.should.be.true;
       });
     }); // end VerifyOperation
