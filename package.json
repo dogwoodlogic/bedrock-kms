@@ -21,10 +21,12 @@
   "bugs": {
     "url": "https://github.com/digitalbazaar/bedrock-kms/issues"
   },
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "homepage": "https://github.com/digitalbazaar/bedrock-kms",
   "dependencies": {
     "@digitalbazaar/ed25519-signature-2020": "^2.0.0",
-    "bedrock-did-io": "digitalbazaar/bedrock-did-io#initial",
     "@digitalbazaar/did-method-key": "digitalbazaar/did-method-key-js#v1.x",
     "did-veres-one": "^13.0.0",
     "lru-cache": "^6.0.0",
@@ -33,10 +35,12 @@
   "peerDependencies": {
     "bedrock": "^4.1.1",
     "bedrock-did-context": "^2.0.0",
+    "bedrock-did-io": "digitalbazaar/bedrock-did-io#initial",
     "bedrock-veres-one-context": "^10.0.1",
     "bedrock-jsonld-document-loader": "^1.0.1",
     "bedrock-mongodb": "^8.0.0",
-    "bedrock-package-manager": "^1.0.1"
+    "bedrock-package-manager": "^1.0.1",
+    "bedrock-security-context": "^4.0.0"
   },
   "directories": {
     "lib": "./lib"

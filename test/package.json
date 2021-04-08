@@ -12,6 +12,7 @@
   "dependencies": {
     "bedrock": "^4.1.1",
     "bedrock-did-context": "^2.0.0",
+    "bedrock-did-io": "digitalbazaar/bedrock-did-io#initial",
     "bedrock-jsonld-document-loader": "^1.0.1",
     "bedrock-kms": "file:..",
     "bedrock-mongodb": "^8.0.0",
