@@ -6,7 +6,7 @@
 - **BREAKING**: Drop support for node 10.
 - Support `ed25519-signature-2020` signature suite.
 - Remove use of `jsonld-signatures`.
-- Remove `@digitalbazaar/did-io` and use `bedrock-did-io`.
+- Remove `@digitalbazaar/did-io` and use `bedrock-did-io@1.0`.
 - Remove `did-method-key`.
 - Update dependencies to latest:
   [bedrock-did-io@1.0](https://github.com/digitalbazaar/bedrock-did-io/pull/2),
