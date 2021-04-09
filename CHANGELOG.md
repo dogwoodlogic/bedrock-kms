@@ -4,13 +4,13 @@
 
 ### Changed
 - **BREAKING**: Drop support for node 10.
-- Support `ed25519-signature-2020` signature suite.
+- **BREAKING**: Use `ed25519-signature-2020` signature suite. Operations must now be signed using Ed25519Signature2020.
 - Remove use of `jsonld-signatures`.
 - Remove `@digitalbazaar/did-io` and use `bedrock-did-io@1.0`.
 - Remove `did-method-key`.
 - Update dependencies to latest:
-  [bedrock-did-io@1.0](https://github.com/digitalbazaar/bedrock-did-io/pull/2),
-  [webkms-switch@4.0](https://github.com/digitalbazaar/webkms-switch/pull/9).
+  - [bedrock-did-io@1.0](https://github.com/digitalbazaar/bedrock-did-io/blob/main/CHANGELOG.md),
+  - [webkms-switch@4.0](https://github.com/digitalbazaar/webkms-switch/blob/main/CHANGELOG.md).
 
 ## 5.0.0 - 2021-03-11
 

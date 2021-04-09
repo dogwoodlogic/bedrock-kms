@@ -43,8 +43,6 @@ jobs:
       run: |
         cd test
         npm test
-      env:
-        CI: true
   coverage:
     needs: [test-node]
     runs-on: ubuntu-latest
@@ -70,8 +68,6 @@ jobs:
       run: |
         cd test
         npm run coverage-ci
-      env:
-        CI: true
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
