@@ -29,7 +29,7 @@
     "@digitalbazaar/ed25519-signature-2020": "^2.1.0",
     "did-veres-one": "^13.0.0",
     "lru-cache": "^6.0.0",
-    "webkms-switch": "^4.0.0"
+    "webkms-switch": "digitalbazaar/webkms-switch#webkms-context"
   },
   "peerDependencies": {
     "bedrock": "^4.1.1",
