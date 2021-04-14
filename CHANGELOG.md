@@ -10,7 +10,7 @@
 - Remove `did-method-key`.
 - Update dependencies to latest:
   - [bedrock-did-io@1.0](https://github.com/digitalbazaar/bedrock-did-io/blob/main/CHANGELOG.md),
-  - [webkms-switch@4.0](https://github.com/digitalbazaar/webkms-switch/blob/main/CHANGELOG.md).
+  - [webkms-switch@5.0](https://github.com/digitalbazaar/webkms-switch/blob/main/CHANGELOG.md).
 
 ## 5.0.0 - 2021-03-11
 
