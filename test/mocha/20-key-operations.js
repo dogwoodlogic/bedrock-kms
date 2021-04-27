@@ -69,7 +69,7 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        result.should.have.keys(['@context', 'id', 'type']);
+        result.should.have.keys(['id', 'type']);
         result.id.should.equal(keyId);
       });
       it('successfully generates a AesKeyWrappingKey2019', async () => {
@@ -88,7 +88,7 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        result.should.have.keys(['@context', 'id', 'type']);
+        result.should.have.keys(['id', 'type']);
         result.id.should.equal(keyId);
       });
       it('throws on UnknownKeyType', async () => {
