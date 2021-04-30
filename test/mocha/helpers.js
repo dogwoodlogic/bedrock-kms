@@ -16,7 +16,7 @@ exports.generateKey = async ({mockData, type}) => {
   }});
 
   const keyId = `${mockKeystoreId}/keys/${uuid()}`;
-  const operation = clone(mockData.operations.generate);
+  const operation = clone(mockData.operations.generate({type}));
   operation.kmsModule = 'ssm-v1';
   operation.invocationTarget.id = keyId;
   operation.invocationTarget.type = type;

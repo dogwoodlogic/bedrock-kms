@@ -10,9 +10,14 @@
     "coverage-report": "nyc report"
   },
   "dependencies": {
+    "@digitalbazaar/ed25519-verification-key-2018": "^3.1.1",
+    "@digitalbazaar/ed25519-verification-key-2020": "^2.1.1",
+    "@digitalbazaar/x25519-key-agreement-key-2019": "^5.1.0",
+    "@digitalbazaar/x25519-key-agreement-key-2020": "^1.2.0",
+    "aes-key-wrapping-2019-context": "^1.0.3",
     "bedrock": "^4.1.1",
     "bedrock-did-context": "^2.0.0",
-    "bedrock-did-io": "^1.0.0",
+    "bedrock-did-io": "digitalbazaar/bedrock-did-io#update-veres-one",
     "bedrock-jsonld-document-loader": "^1.0.1",
     "bedrock-kms": "file:..",
     "bedrock-mongodb": "^8.2.0",
@@ -20,10 +25,13 @@
     "bedrock-package-manager": "^1.0.1",
     "bedrock-security-context": "^4.1.0",
     "bedrock-ssm-mongodb": "^5.0.0",
-    "bedrock-veres-one-context": "^10.0.1",
     "bedrock-test": "^5.3.2",
+    "bedrock-veres-one-context": "digitalbazaar/bedrock-veres-one-context#update-deps",
     "cross-env": "^7.0.3",
-    "nyc": "^15.1.0"
+    "ed25519-signature-2018-context": "^1.1.0",
+    "nyc": "^15.1.0",
+    "sha256-hmac-key-2019-context": "^1.0.3",
+    "webkms-context": "^1.0.0"
   },
   "nyc": {
     "excludeNodeModules": false,
