@@ -5,6 +5,7 @@
 ### Changed
 - **BREAKING**: Drop support for node 10.
 - **BREAKING**: Use `ed25519-signature-2020` signature suite. Operations must now be signed using Ed25519Signature2020.
+- Remove unused `did-veres-one`.
 - Remove use of `jsonld-signatures`.
 - Remove `@digitalbazaar/did-io` and use `bedrock-did-io@1.0`.
 - Remove `did-method-key`.
