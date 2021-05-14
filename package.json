@@ -26,9 +26,6 @@
   },
   "homepage": "https://github.com/digitalbazaar/bedrock-kms",
   "dependencies": {
-    "@digitalbazaar/ed25519-signature-2020": "^2.1.0",
-    "lru-cache": "^6.0.0",
-    "webkms-switch": "^5.0.0"
   },
   "peerDependencies": {
     "bedrock": "^4.1.1",

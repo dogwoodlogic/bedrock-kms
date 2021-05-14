@@ -7,10 +7,13 @@ const brKms = require('bedrock-kms');
 const {util: {clone, uuid}} = require('bedrock');
 const helpers = require('./helpers');
 const mockData = require('./mock.data');
+const {runOperation} = require('webkms-switch');
+const moduleManager = brKms.defaultModuleManager;
 
 describe('bulk operations', () => {
-  describe('Ed25519VerificationKey2018', () => {
+  describe('Ed25519VerificationKey2020', () => {
     let mockKeyId;
+    const kmsModule = 'ssm-v1';
     const operationCount = 10000;
     const vData = [];
     before(async () => {
@@ -26,7 +29,7 @@ describe('bulk operations', () => {
       let err;
       try {
         ({id: mockKeyId} = await helpers.generateKey(
-          {mockData, type: 'Ed25519VerificationKey2018'}));
+          {mockData, type: 'Ed25519VerificationKey2020'}));
       } catch(e) {
         err = e;
       }
@@ -39,8 +42,8 @@ describe('bulk operations', () => {
         const operation = clone(mockData.operations.sign);
         operation.invocationTarget = mockKeyId;
         operation.verifyData = vData[i];
-        promises.push(brKms.runOperation({
-          operation
+        promises.push(runOperation({
+          operation, kmsModule, moduleManager
         }));
       }
       let result;
@@ -58,6 +61,7 @@ describe('bulk operations', () => {
   });
   describe('Sha256HmacKey2019', () => {
     let mockKeyId;
+    const kmsModule = 'ssm-v1';
     const operationCount = 10000;
     const vData = [];
     before(async () => {
@@ -86,8 +90,8 @@ describe('bulk operations', () => {
         const operation = clone(mockData.operations.sign);
         operation.invocationTarget = mockKeyId;
         operation.verifyData = vData[i];
-        promises.push(brKms.runOperation({
-          operation
+        promises.push(runOperation({
+          operation, kmsModule, moduleManager
         }));
       }
       let result;

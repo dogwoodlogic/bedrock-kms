@@ -3,7 +3,7 @@
  */
 'use strict';
 
-const {keystores, _caches} = require('bedrock-kms');
+const {keystores} = require('bedrock-kms');
 const {util: {clone}} = require('bedrock');
 
 describe('keystores APIs', () => {
@@ -128,26 +128,6 @@ describe('keystores APIs', () => {
       err.name.should.equal('InvalidStateError');
       err.details.id.should.equal(config.id);
       err.details.sequence.should.equal(config.sequence);
-    });
-    it('successfully updates a keystore and invalidates cache', async () => {
-      let err;
-      let result;
-      const config = clone(mockConfigBeta);
-      config.sequence = 3;
-      config.controller = 'someOtherController';
-      // add mock key record to cache
-      const keyId = `${config.id}/keys/1`;
-      _caches.keyRecords.set(keyId, {key: {id: keyId}});
-      try {
-        result = await keystores.update({config});
-      } catch(e) {
-        err = e;
-      }
-      assertNoError(err);
-      result.should.be.a('boolean');
-      result.should.be.true;
-      const keyRecord = _caches.keyRecords.get(config.id);
-      should.not.exist(keyRecord);
     });
     it('throws error on unknown keystore id', async () => {
       let err;

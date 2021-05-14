@@ -7,6 +7,8 @@ const brKms = require('bedrock-kms');
 const {util: {clone, uuid}} = require('bedrock');
 const helpers = require('./helpers');
 const mockData = require('./mock.data');
+const {runOperation} = require('webkms-switch');
+const moduleManager = brKms.defaultModuleManager;
 
 describe('bedrock-kms', () => {
   before(async () => {});
@@ -15,15 +17,15 @@ describe('bedrock-kms', () => {
     describe('GenerateKeyOperation', () => {
       it('successfully generates a Ed25519VerificationKey2018', async () => {
         const keyId = `https://example.com/keystores/x/keys/e1d40821`;
+        const kmsModule = 'ssm-v1';
         const operation = clone(
           mockData.operations.generate({type: 'Ed25519VerificationKey2018'}));
-        operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;
         operation.invocationTarget.type = 'Ed25519VerificationKey2018';
         let error;
         let result;
         try {
-          result = await brKms.runOperation({operation});
+          result = await runOperation({operation, kmsModule, moduleManager});
         } catch(e) {
           error = e;
         }
@@ -36,15 +38,15 @@ describe('bedrock-kms', () => {
       });
       it('successfully generates a Ed25519VerificationKey2020', async () => {
         const keyId = `https://example.com/keystores/x/keys/e1d40823`;
+        const kmsModule = 'ssm-v1';
         const operation = clone(
           mockData.operations.generate({type: 'Ed25519VerificationKey2020'}));
-        operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;
         operation.invocationTarget.type = 'Ed25519VerificationKey2020';
         let error;
         let result;
         try {
-          result = await brKms.runOperation({operation});
+          result = await runOperation({operation, kmsModule, moduleManager});
         } catch(e) {
           error = e;
         }
@@ -57,15 +59,15 @@ describe('bedrock-kms', () => {
       });
       it('successfully generates a Sha256HmacKey2019', async () => {
         const keyId = `https://example.com/keystores/x/keys/2adfef65`;
+        const kmsModule = 'ssm-v1';
         const operation = clone(
           mockData.operations.generate({type: 'Sha256HmacKey2019'}));
-        operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;
         operation.invocationTarget.type = 'Sha256HmacKey2019';
         let error;
         let result;
         try {
-          result = await brKms.runOperation({operation});
+          result = await runOperation({operation, kmsModule, moduleManager});
         } catch(e) {
           error = e;
         }
@@ -77,15 +79,15 @@ describe('bedrock-kms', () => {
       });
       it('successfully generates a AesKeyWrappingKey2019', async () => {
         const keyId = `https://example.com/keystores/x/keys/a8b26a4c`;
+        const kmsModule = 'ssm-v1';
         const operation = clone(
           mockData.operations.generate({type: 'AesKeyWrappingKey2019'}));
-        operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;
         operation.invocationTarget.type = 'AesKeyWrappingKey2019';
         let error;
         let result;
         try {
-          result = await brKms.runOperation({operation});
+          result = await runOperation({operation, kmsModule, moduleManager});
         } catch(e) {
           error = e;
         }
@@ -97,15 +99,15 @@ describe('bedrock-kms', () => {
       });
       it('throws on UnknownKeyType', async () => {
         const keyId = `https://example.com/keystores/x/keys/44b2d099`;
+        const kmsModule = 'ssm-v1';
         const operation = clone(
           mockData.operations.generate({type: 'AesKeyWrappingKey2019'}));
-        operation.kmsModule = 'ssm-v1';
         operation.invocationTarget.id = keyId;
         operation.invocationTarget.type = 'UnknownKeyType';
         let error;
         let result;
         try {
-          result = await brKms.runOperation({operation});
+          result = await runOperation({operation, kmsModule, moduleManager});
         } catch(e) {
           error = e;
         }
@@ -119,13 +121,14 @@ describe('bedrock-kms', () => {
       it('signs a string using Ed25519VerificationKey2018', async () => {
         const {id: keyId} = await helpers.generateKey(
           {mockData, type: 'Ed25519VerificationKey2018'});
+        const kmsModule = 'ssm-v1';
         const operation = clone(mockData.operations.sign);
         operation.invocationTarget = keyId;
         operation.verifyData = uuid();
         let result;
         let error;
         try {
-          result = await brKms.runOperation({operation});
+          result = await runOperation({operation, kmsModule, moduleManager});
         } catch(e) {
           error = e;
         }
@@ -140,13 +143,14 @@ describe('bedrock-kms', () => {
       it('signs a string using Ed25519VerificationKey2020', async () => {
         const {id: keyId} = await helpers.generateKey(
           {mockData, type: 'Ed25519VerificationKey2020'});
+        const kmsModule = 'ssm-v1';
         const operation = clone(mockData.operations.sign);
         operation.invocationTarget = keyId;
         operation.verifyData = uuid();
         let result;
         let error;
         try {
-          result = await brKms.runOperation({operation});
+          result = await runOperation({operation, kmsModule, moduleManager});
         } catch(e) {
           error = e;
         }
@@ -161,13 +165,14 @@ describe('bedrock-kms', () => {
       it('signs a string using Sha256HmacKey2019', async () => {
         const {id: keyId} = await helpers.generateKey(
           {mockData, type: 'Sha256HmacKey2019'});
+        const kmsModule = 'ssm-v1';
         const operation = clone(mockData.operations.sign);
         operation.invocationTarget = keyId;
         operation.verifyData = uuid();
         let result;
         let error;
         try {
-          result = await brKms.runOperation({operation});
+          result = await runOperation({operation, kmsModule, moduleManager});
         } catch(e) {
           error = e;
         }
@@ -186,11 +191,12 @@ describe('bedrock-kms', () => {
         const verifyData = uuid();
         const {id: keyId} = await helpers.generateKey(
           {mockData, type: 'Sha256HmacKey2019'});
+        const kmsModule = 'ssm-v1';
         const signOperation = clone(mockData.operations.sign);
         signOperation.invocationTarget = keyId;
         signOperation.verifyData = verifyData;
-        const {signatureValue} = await brKms.runOperation(
-          {operation: signOperation});
+        const {signatureValue} = await runOperation(
+          {operation: signOperation, kmsModule, moduleManager});
         const verifyOperation = clone(mockData.operations.verify);
         verifyOperation.invocationTarget = keyId;
         verifyOperation.verifyData = verifyData;
@@ -198,7 +204,8 @@ describe('bedrock-kms', () => {
         let result;
         let error;
         try {
-          result = await brKms.runOperation({operation: verifyOperation});
+          result = await runOperation(
+            {operation: verifyOperation, kmsModule, moduleManager});
         } catch(e) {
           error = e;
         }
