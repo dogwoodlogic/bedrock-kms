@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/digitalbazaar/bedrock-kms",
   "dependencies": {
+    "@digitalbazaar/lru-memoize": "^2.0.0"
   },
   "peerDependencies": {
     "bedrock": "^4.1.1",

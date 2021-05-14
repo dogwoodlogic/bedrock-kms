@@ -129,6 +129,24 @@ describe('keystores APIs', () => {
       err.details.id.should.equal(config.id);
       err.details.sequence.should.equal(config.sequence);
     });
+    it('successfully updates a keystore and invalidates cache', async () => {
+      let err;
+      let result;
+      const config = clone(mockConfigBeta);
+      config.sequence = 3;
+      config.controller = 'someOtherController';
+      try {
+        result = await keystores.update({config});
+      } catch(e) {
+        err = e;
+      }
+      assertNoError(err);
+      result.should.be.a('boolean');
+      result.should.be.true;
+      const keyRecord = keystores.get({id: config.id});
+      should.exist(keyRecord);
+      keyRecord.config.sequence.should.equal(3);
+    });
     it('throws error on unknown keystore id', async () => {
       let err;
       let result;
