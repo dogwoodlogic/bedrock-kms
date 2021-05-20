@@ -16,8 +16,11 @@ describe('bedrock-kms', () => {
   describe('runOperation API', () => {
     describe('GenerateKeyOperation', () => {
       it('successfully generates a Ed25519VerificationKey2018', async () => {
-        const keyId = `https://example.com/keystores/x/keys/e1d40821`;
-        const kmsModule = 'ssm-v1';
+        const keystore = {
+          id: 'https://example.com/keystores/x',
+          kmsModule: 'ssm-v1'
+        };
+        const keyId = `${keystore.id}/keys/e1d40821`;
         const operation = clone(
           mockData.operations.generate({type: 'Ed25519VerificationKey2018'}));
         operation.invocationTarget.id = keyId;
@@ -25,7 +28,7 @@ describe('bedrock-kms', () => {
         let error;
         let result;
         try {
-          result = await runOperation({operation, kmsModule, moduleManager});
+          result = await runOperation({operation, keystore, moduleManager});
         } catch(e) {
           error = e;
         }
@@ -37,8 +40,11 @@ describe('bedrock-kms', () => {
         result.publicKeyBase58.should.be.a('string');
       });
       it('successfully generates a Ed25519VerificationKey2020', async () => {
-        const keyId = `https://example.com/keystores/x/keys/e1d40823`;
-        const kmsModule = 'ssm-v1';
+        const keystore = {
+          id: 'https://example.com/keystores/x',
+          kmsModule: 'ssm-v1'
+        };
+        const keyId = `${keystore.id}/keys/e1d40823`;
         const operation = clone(
           mockData.operations.generate({type: 'Ed25519VerificationKey2020'}));
         operation.invocationTarget.id = keyId;
@@ -46,7 +52,7 @@ describe('bedrock-kms', () => {
         let error;
         let result;
         try {
-          result = await runOperation({operation, kmsModule, moduleManager});
+          result = await runOperation({operation, keystore, moduleManager});
         } catch(e) {
           error = e;
         }
@@ -58,8 +64,11 @@ describe('bedrock-kms', () => {
         result.publicKeyMultibase.should.be.a('string');
       });
       it('successfully generates a Sha256HmacKey2019', async () => {
-        const keyId = `https://example.com/keystores/x/keys/2adfef65`;
-        const kmsModule = 'ssm-v1';
+        const keystore = {
+          id: 'https://example.com/keystores/x',
+          kmsModule: 'ssm-v1'
+        };
+        const keyId = `${keystore.id}/keys/2adfef65`;
         const operation = clone(
           mockData.operations.generate({type: 'Sha256HmacKey2019'}));
         operation.invocationTarget.id = keyId;
@@ -67,7 +76,7 @@ describe('bedrock-kms', () => {
         let error;
         let result;
         try {
-          result = await runOperation({operation, kmsModule, moduleManager});
+          result = await runOperation({operation, keystore, moduleManager});
         } catch(e) {
           error = e;
         }
@@ -78,8 +87,11 @@ describe('bedrock-kms', () => {
         result.id.should.equal(keyId);
       });
       it('successfully generates a AesKeyWrappingKey2019', async () => {
-        const keyId = `https://example.com/keystores/x/keys/a8b26a4c`;
-        const kmsModule = 'ssm-v1';
+        const keystore = {
+          id: 'https://example.com/keystores/x',
+          kmsModule: 'ssm-v1'
+        };
+        const keyId = `${keystore.id}/keys/a8b26a4c`;
         const operation = clone(
           mockData.operations.generate({type: 'AesKeyWrappingKey2019'}));
         operation.invocationTarget.id = keyId;
@@ -87,7 +99,7 @@ describe('bedrock-kms', () => {
         let error;
         let result;
         try {
-          result = await runOperation({operation, kmsModule, moduleManager});
+          result = await runOperation({operation, keystore, moduleManager});
         } catch(e) {
           error = e;
         }
@@ -98,8 +110,11 @@ describe('bedrock-kms', () => {
         result.id.should.equal(keyId);
       });
       it('throws on UnknownKeyType', async () => {
-        const keyId = `https://example.com/keystores/x/keys/44b2d099`;
-        const kmsModule = 'ssm-v1';
+        const keystore = {
+          id: 'https://example.com/keystores/x',
+          kmsModule: 'ssm-v1'
+        };
+        const keyId = `${keystore.id}/keys/44b2d099`;
         const operation = clone(
           mockData.operations.generate({type: 'AesKeyWrappingKey2019'}));
         operation.invocationTarget.id = keyId;
@@ -107,7 +122,7 @@ describe('bedrock-kms', () => {
         let error;
         let result;
         try {
-          result = await runOperation({operation, kmsModule, moduleManager});
+          result = await runOperation({operation, keystore, moduleManager});
         } catch(e) {
           error = e;
         }
@@ -119,16 +134,15 @@ describe('bedrock-kms', () => {
 
     describe('SignOperation', () => {
       it('signs a string using Ed25519VerificationKey2018', async () => {
-        const {id: keyId} = await helpers.generateKey(
+        const {keystore, key: {id: keyId}} = await helpers.generateKey(
           {mockData, type: 'Ed25519VerificationKey2018'});
-        const kmsModule = 'ssm-v1';
         const operation = clone(mockData.operations.sign);
         operation.invocationTarget = keyId;
         operation.verifyData = uuid();
         let result;
         let error;
         try {
-          result = await runOperation({operation, kmsModule, moduleManager});
+          result = await runOperation({operation, keystore, moduleManager});
         } catch(e) {
           error = e;
         }
@@ -141,16 +155,15 @@ describe('bedrock-kms', () => {
         signatureValue.should.be.a('string');
       });
       it('signs a string using Ed25519VerificationKey2020', async () => {
-        const {id: keyId} = await helpers.generateKey(
+        const {keystore, key: {id: keyId}} = await helpers.generateKey(
           {mockData, type: 'Ed25519VerificationKey2020'});
-        const kmsModule = 'ssm-v1';
         const operation = clone(mockData.operations.sign);
         operation.invocationTarget = keyId;
         operation.verifyData = uuid();
         let result;
         let error;
         try {
-          result = await runOperation({operation, kmsModule, moduleManager});
+          result = await runOperation({operation, keystore, moduleManager});
         } catch(e) {
           error = e;
         }
@@ -163,16 +176,15 @@ describe('bedrock-kms', () => {
         signatureValue.should.be.a('string');
       });
       it('signs a string using Sha256HmacKey2019', async () => {
-        const {id: keyId} = await helpers.generateKey(
+        const {keystore, key: {id: keyId}} = await helpers.generateKey(
           {mockData, type: 'Sha256HmacKey2019'});
-        const kmsModule = 'ssm-v1';
         const operation = clone(mockData.operations.sign);
         operation.invocationTarget = keyId;
         operation.verifyData = uuid();
         let result;
         let error;
         try {
-          result = await runOperation({operation, kmsModule, moduleManager});
+          result = await runOperation({operation, keystore, moduleManager});
         } catch(e) {
           error = e;
         }
@@ -189,14 +201,13 @@ describe('bedrock-kms', () => {
     describe('VerifyOperation', () => {
       it('verifies a string using Sha256HmacKey2019', async () => {
         const verifyData = uuid();
-        const {id: keyId} = await helpers.generateKey(
+        const {keystore, key: {id: keyId}} = await helpers.generateKey(
           {mockData, type: 'Sha256HmacKey2019'});
-        const kmsModule = 'ssm-v1';
         const signOperation = clone(mockData.operations.sign);
         signOperation.invocationTarget = keyId;
         signOperation.verifyData = verifyData;
         const {signatureValue} = await runOperation(
-          {operation: signOperation, kmsModule, moduleManager});
+          {operation: signOperation, keystore, moduleManager});
         const verifyOperation = clone(mockData.operations.verify);
         verifyOperation.invocationTarget = keyId;
         verifyOperation.verifyData = verifyData;
@@ -205,7 +216,7 @@ describe('bedrock-kms', () => {
         let error;
         try {
           result = await runOperation(
-            {operation: verifyOperation, kmsModule, moduleManager});
+            {operation: verifyOperation, keystore, moduleManager});
         } catch(e) {
           error = e;
         }

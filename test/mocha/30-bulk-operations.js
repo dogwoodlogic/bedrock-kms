@@ -13,7 +13,7 @@ const moduleManager = brKms.defaultModuleManager;
 describe('bulk operations', () => {
   describe('Ed25519VerificationKey2020', () => {
     let mockKeyId;
-    const kmsModule = 'ssm-v1';
+    let keystore;
     const operationCount = 10000;
     const vData = [];
     before(async () => {
@@ -28,7 +28,7 @@ describe('bulk operations', () => {
     before(async () => {
       let err;
       try {
-        ({id: mockKeyId} = await helpers.generateKey(
+        ({keystore, key: {id: mockKeyId}} = await helpers.generateKey(
           {mockData, type: 'Ed25519VerificationKey2020'}));
       } catch(e) {
         err = e;
@@ -43,7 +43,7 @@ describe('bulk operations', () => {
         operation.invocationTarget = mockKeyId;
         operation.verifyData = vData[i];
         promises.push(runOperation({
-          operation, kmsModule, moduleManager
+          operation, keystore, moduleManager
         }));
       }
       let result;
@@ -61,7 +61,7 @@ describe('bulk operations', () => {
   });
   describe('Sha256HmacKey2019', () => {
     let mockKeyId;
-    const kmsModule = 'ssm-v1';
+    let keystore;
     const operationCount = 10000;
     const vData = [];
     before(async () => {
@@ -76,7 +76,7 @@ describe('bulk operations', () => {
     before(async () => {
       let err;
       try {
-        ({id: mockKeyId} = await helpers.generateKey(
+        ({keystore, key: {id: mockKeyId}} = await helpers.generateKey(
           {mockData, type: 'Sha256HmacKey2019'}));
       } catch(e) {
         err = e;
@@ -91,7 +91,7 @@ describe('bulk operations', () => {
         operation.invocationTarget = mockKeyId;
         operation.verifyData = vData[i];
         promises.push(runOperation({
-          operation, kmsModule, moduleManager
+          operation, keystore, moduleManager
         }));
       }
       let result;
