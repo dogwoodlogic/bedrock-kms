@@ -47,12 +47,29 @@ describe('keystores APIs', () => {
       should.exist(err);
       err.message.should.contain('config.controller (string) is required');
     });
+    it('throws error on missing config.kmsModule', async () => {
+      let err;
+      let result;
+      const config = {
+        id: 'https://example.com/keystores/foo',
+        controller: 'bar',
+      };
+      try {
+        result = await keystores.insert({config});
+      } catch(e) {
+        err = e;
+      }
+      should.not.exist(result);
+      should.exist(err);
+      err.message.should.contain('config.kmsModule (string) is required');
+    });
     it('throws error on missing config.sequence', async () => {
       let err;
       let result;
       const config = {
         id: 'https://example.com/keystores/foo',
         controller: 'bar',
+        kmsModule: 'ssm-v1'
       };
       try {
         result = await keystores.insert({config});
@@ -69,6 +86,7 @@ describe('keystores APIs', () => {
       const config = {
         id: 'https://example.com/keystores/foo',
         controller: 'bar',
+        kmsModule: 'ssm-v1',
         sequence: -1,
       };
       try {
@@ -86,6 +104,7 @@ describe('keystores APIs', () => {
       const config = {
         id: 'https://example.com/keystores/foo',
         controller: 'bar',
+        kmsModule: 'ssm-v1',
         sequence: 1.1,
       };
       try {
@@ -103,6 +122,7 @@ describe('keystores APIs', () => {
       const config = {
         id: 'https://example.com/keystores/foo',
         controller: 'bar',
+        kmsModule: 'ssm-v1',
         sequence: 1,
       };
       try {
@@ -120,6 +140,7 @@ describe('keystores APIs', () => {
       const config = {
         id: 'https://example.com/keystores/foo',
         controller: 'bar',
+        kmsModule: 'ssm-v1',
         sequence: '0',
       };
       try {
@@ -137,6 +158,7 @@ describe('keystores APIs', () => {
       const config = {
         id: 1,
         controller: 'bar',
+        kmsModule: 'ssm-v1',
         sequence: '0',
       };
       try {
@@ -154,6 +176,7 @@ describe('keystores APIs', () => {
       const config = {
         id: 'https://example.com/keystores/foo',
         controller: 1,
+        kmsModule: 'ssm-v1',
         sequence: '0',
       };
       try {
@@ -171,6 +194,7 @@ describe('keystores APIs', () => {
       const config = {
         id: 'https://example.com/keystores/foo',
         controller: 'bar',
+        kmsModule: 'ssm-v1',
         sequence: 0,
       };
       try {
@@ -191,6 +215,7 @@ describe('keystores APIs', () => {
         id:
           'https://example.com/keystores/fbea027c-ecc4-4562-b3dc-392db7b7c7c6',
         controller: 'bar',
+        kmsModule: 'ssm-v1',
         sequence: 0,
       };
       try {
@@ -218,6 +243,7 @@ describe('keystores APIs', () => {
         const keystoreConfig1 = {
           id: 'https://example.com/keystores/fbea027c',
           controller: 'bar',
+          kmsModule: 'ssm-v1',
           referenceId: 'urn:uuid:72b89236-7bb7-4d00-8930-9c74c4a7a4a8',
           sequence: 0,
         };
@@ -232,6 +258,7 @@ describe('keystores APIs', () => {
         const keystoreConfig2 = {
           id: 'https://example.com/keystores/4f398f8f',
           controller: 'bar',
+          kmsModule: 'ssm-v1',
           referenceId: 'urn:uuid:72b89236-7bb7-4d00-8930-9c74c4a7a4a8',
           sequence: 0,
         };
