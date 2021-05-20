@@ -33,7 +33,7 @@
   "peerDependencies": {
     "bedrock": "^4.1.1",
     "bedrock-did-context": "^2.0.0",
-    "bedrock-did-io": "digitalbazaar/bedrock-did-io#update-veres-one",
+    "bedrock-did-io": "^2.0.0",
     "bedrock-veres-one-context": "^11.0.0",
     "bedrock-jsonld-document-loader": "^1.0.1",
     "bedrock-mongodb": "^8.2.0",

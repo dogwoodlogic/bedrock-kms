@@ -17,7 +17,7 @@
     "aes-key-wrapping-2019-context": "^1.0.3",
     "bedrock": "^4.1.1",
     "bedrock-did-context": "^2.0.0",
-    "bedrock-did-io": "digitalbazaar/bedrock-did-io#update-veres-one",
+    "bedrock-did-io": "^2.0.0",
     "bedrock-jsonld-document-loader": "^1.0.1",
     "bedrock-kms": "file:..",
     "bedrock-ledger-context": "^18.0.0",
