@@ -9,17 +9,20 @@ const {util: {clone}} = require('bedrock');
 describe('keystores APIs', () => {
   const mockConfigAlpha = {
     id: 'https://example.com/keystores/b122cc8a-39be-4680-b88e-2593b1295b1b',
+    kmsModule: 'ssm-v1',
     controller: '8a945a10-9f6a-4096-8306-c6c6825a9fe2',
     sequence: 0,
     referenceId: '95901c02-a4ad-4d3a-be17-0be3aafbe6f3',
   };
   const mockConfigBeta = {
     id: 'https://example.com/keystores/f454ad49-90eb-4f15-aff9-13048adc84d0',
+    kmsModule: 'ssm-v1',
     controller: '8e79ce0e-926d-457c-b520-849663e1d9de',
     sequence: 0,
   };
   const mockConfigGamma = {
     id: 'https://example.com/keystores/6be652c3-3ed6-452b-a98a-cb0ad6905f37',
+    kmsModule: 'ssm-v1',
     controller: 'f2da13ee-50d2-46ab-865d-ee23d609edbd',
     sequence: 0,
   };
@@ -143,7 +146,7 @@ describe('keystores APIs', () => {
       assertNoError(err);
       result.should.be.a('boolean');
       result.should.be.true;
-      const keyRecord = keystores.get({id: config.id});
+      const keyRecord = await keystores.get({id: config.id});
       should.exist(keyRecord);
       keyRecord.config.sequence.should.equal(3);
     });

@@ -11,9 +11,7 @@ const {runOperation} = require('webkms-switch');
 const moduleManager = brKms.defaultModuleManager;
 
 describe('bedrock-kms', () => {
-  before(async () => {});
-
-  describe('runOperation API', () => {
+  describe('integration with runOperation API', () => {
     describe('GenerateKeyOperation', () => {
       it('successfully generates a Ed25519VerificationKey2018', async () => {
         const keystore = {
@@ -34,7 +32,7 @@ describe('bedrock-kms', () => {
         }
         assertNoError(error);
         should.exist(result);
-        result.should.have.keys(['id', 'publicKeyBase58', 'type']);
+        result.should.have.keys(['@context', 'id', 'publicKeyBase58', 'type']);
         result.id.should.equal(keyId);
         result.type.should.equal(operation.invocationTarget.type);
         result.publicKeyBase58.should.be.a('string');
@@ -58,7 +56,8 @@ describe('bedrock-kms', () => {
         }
         assertNoError(error);
         should.exist(result);
-        result.should.have.keys(['id', 'publicKeyMultibase', 'type']);
+        result.should.have.keys(
+          ['@context', 'id', 'publicKeyMultibase', 'type']);
         result.id.should.equal(keyId);
         result.type.should.equal(operation.invocationTarget.type);
         result.publicKeyMultibase.should.be.a('string');
@@ -83,7 +82,7 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        result.should.have.keys(['id', 'type']);
+        result.should.have.keys(['@context', 'id', 'type']);
         result.id.should.equal(keyId);
       });
       it('successfully generates a AesKeyWrappingKey2019', async () => {
@@ -106,7 +105,7 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        result.should.have.keys(['id', 'type']);
+        result.should.have.keys(['@context', 'id', 'type']);
         result.id.should.equal(keyId);
       });
       it('throws on UnknownKeyType', async () => {

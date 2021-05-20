@@ -25,6 +25,6 @@ exports.generateKey = async ({mockData, type}) => {
   const moduleManager = brKms.defaultModuleManager;
   return {
     keystore,
-    keyDescription: await runOperation({operation, keystore, moduleManager})
+    key: await runOperation({operation, keystore, moduleManager})
   };
 };
