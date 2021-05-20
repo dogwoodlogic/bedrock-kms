@@ -1,13 +1,14 @@
 # bedrock-kms ChangeLog
 
-## 6.0.0 - 2021-04-TBD
+## 6.0.0 - 2021-05-20
 
 ### Changed
 - **BREAKING**: Drop support for node 10.
-- **BREAKING**: Use `ed25519-signature-2020` signature suite. Operations must now be signed using Ed25519Signature2020.
+- **BREAKING**: Use `ed25519-signature-2020` signature suite. Operations must
+  now be signed using the `Ed25519Signature2020` suite.
 - Remove unused `did-veres-one`.
 - Remove use of `jsonld-signatures`.
-- Remove `@digitalbazaar/did-io` and use `bedrock-did-io@1.0`.
+- Remove `@digitalbazaar/did-io` and use `bedrock-did-io@2.0`.
 - Remove `did-method-key`.
 - Update dependencies to latest:
   - [bedrock-did-io@2.0](https://github.com/digitalbazaar/bedrock-did-io/blob/main/CHANGELOG.md),
