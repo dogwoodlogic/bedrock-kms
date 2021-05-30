@@ -1,5 +1,14 @@
 # bedrock-kms ChangeLog
 
+## 7.0.0 - 2021-xx-xx
+
+### Changed
+- **BREAKING**: Database keystore collection now named `kms-keystore` to match
+  modern naming convention. There is no expectation that old systems will
+  be able to upgrade in place to this new version, rather existing systems
+  that relied on bedrock-kms (typically via bedrock-kms-http) must transition
+  to new systems running the new version.
+
 ## 6.0.0 - 2021-05-20
 
 ### Changed
