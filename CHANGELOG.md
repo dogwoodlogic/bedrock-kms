@@ -2,12 +2,21 @@
 
 ## 7.0.0 - 2021-xx-xx
 
+### Added
+- Add `getStorageUsage` API. This function can be called with a meter ID,
+  WebKMS module manager API and an optional abort signal. It will return the
+  current storage usage for all keystores that use the identified meter.
+
 ### Changed
 - **BREAKING**: Database keystore collection now named `kms-keystore` to match
   modern naming convention. There is no expectation that old systems will
   be able to upgrade in place to this new version, rather existing systems
   that relied on bedrock-kms (typically via bedrock-kms-http) must transition
   to new systems running the new version.
+
+### Removed
+- **BREAKING**: Removed deprecated `fields` option from `keystores.find` API.
+  Use `options.projection` option instead.
 
 ## 6.0.0 - 2021-05-20
 
