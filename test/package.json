@@ -27,6 +27,7 @@
     "bedrock-ssm-mongodb": "digitalbazaar/bedrock-ssm-mongodb#update",
     "bedrock-test": "^5.3.2",
     "bedrock-veres-one-context": "^11.0.0",
+    "bnid": "^2.0.0",
     "cross-env": "^7.0.3",
     "crypto-ld": "^6.0.0",
     "nyc": "^15.1.0",

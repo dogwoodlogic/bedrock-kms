@@ -5,6 +5,7 @@
 
 const brKms = require('bedrock-kms');
 const {util: {clone, uuid}} = require('bedrock');
+const {generateId} = require('bnid');
 const helpers = require('./helpers');
 const mockData = require('./mock.data');
 const {runOperation} = require('webkms-switch');
@@ -18,7 +19,7 @@ describe('bedrock-kms', () => {
           id: 'https://example.com/keystores/x',
           kmsModule: 'ssm-v1'
         };
-        const keyId = `${keystore.id}/keys/e1d40821`;
+        const keyId = `${keystore.id}/keys/${await generateId()}`;
         const operation = clone(
           mockData.operations.generate({type: 'Ed25519VerificationKey2018'}));
         operation.invocationTarget.id = keyId;
@@ -42,7 +43,7 @@ describe('bedrock-kms', () => {
           id: 'https://example.com/keystores/x',
           kmsModule: 'ssm-v1'
         };
-        const keyId = `${keystore.id}/keys/e1d40823`;
+        const keyId = `${keystore.id}/keys/${await generateId()}`;
         const operation = clone(
           mockData.operations.generate({type: 'Ed25519VerificationKey2020'}));
         operation.invocationTarget.id = keyId;
@@ -67,7 +68,7 @@ describe('bedrock-kms', () => {
           id: 'https://example.com/keystores/x',
           kmsModule: 'ssm-v1'
         };
-        const keyId = `${keystore.id}/keys/2adfef65`;
+        const keyId = `${keystore.id}/keys/${await generateId()}`;
         const operation = clone(
           mockData.operations.generate({type: 'Sha256HmacKey2019'}));
         operation.invocationTarget.id = keyId;
@@ -90,7 +91,7 @@ describe('bedrock-kms', () => {
           id: 'https://example.com/keystores/x',
           kmsModule: 'ssm-v1'
         };
-        const keyId = `${keystore.id}/keys/a8b26a4c`;
+        const keyId = `${keystore.id}/keys/${await generateId()}`;
         const operation = clone(
           mockData.operations.generate({type: 'AesKeyWrappingKey2019'}));
         operation.invocationTarget.id = keyId;
@@ -113,7 +114,7 @@ describe('bedrock-kms', () => {
           id: 'https://example.com/keystores/x',
           kmsModule: 'ssm-v1'
         };
-        const keyId = `${keystore.id}/keys/44b2d099`;
+        const keyId = `${keystore.id}/keys/${await generateId()}`;
         const operation = clone(
           mockData.operations.generate({type: 'AesKeyWrappingKey2019'}));
         operation.invocationTarget.id = keyId;
