@@ -5,7 +5,6 @@
 
 const brKms = require('bedrock-kms');
 const {util: {clone, uuid}} = require('bedrock');
-const {generateId} = require('bnid');
 const helpers = require('./helpers');
 const mockData = require('./mock.data');
 const {runOperation} = require('webkms-switch');
@@ -19,10 +18,8 @@ describe('bedrock-kms', () => {
           id: 'https://example.com/keystores/x',
           kmsModule: 'ssm-v1'
         };
-        const keyId = `${keystore.id}/keys/${await generateId()}`;
         const operation = clone(
           mockData.operations.generate({type: 'Ed25519VerificationKey2018'}));
-        operation.invocationTarget.id = keyId;
         operation.invocationTarget.type = 'Ed25519VerificationKey2018';
         let error;
         let result;
@@ -34,7 +31,6 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.have.keys(['@context', 'id', 'publicKeyBase58', 'type']);
-        result.id.should.equal(keyId);
         result.type.should.equal(operation.invocationTarget.type);
         result.publicKeyBase58.should.be.a('string');
       });
@@ -43,10 +39,8 @@ describe('bedrock-kms', () => {
           id: 'https://example.com/keystores/x',
           kmsModule: 'ssm-v1'
         };
-        const keyId = `${keystore.id}/keys/${await generateId()}`;
         const operation = clone(
           mockData.operations.generate({type: 'Ed25519VerificationKey2020'}));
-        operation.invocationTarget.id = keyId;
         operation.invocationTarget.type = 'Ed25519VerificationKey2020';
         let error;
         let result;
@@ -59,7 +53,6 @@ describe('bedrock-kms', () => {
         should.exist(result);
         result.should.have.keys(
           ['@context', 'id', 'publicKeyMultibase', 'type']);
-        result.id.should.equal(keyId);
         result.type.should.equal(operation.invocationTarget.type);
         result.publicKeyMultibase.should.be.a('string');
       });
@@ -68,10 +61,8 @@ describe('bedrock-kms', () => {
           id: 'https://example.com/keystores/x',
           kmsModule: 'ssm-v1'
         };
-        const keyId = `${keystore.id}/keys/${await generateId()}`;
         const operation = clone(
           mockData.operations.generate({type: 'Sha256HmacKey2019'}));
-        operation.invocationTarget.id = keyId;
         operation.invocationTarget.type = 'Sha256HmacKey2019';
         let error;
         let result;
@@ -84,17 +75,14 @@ describe('bedrock-kms', () => {
         should.exist(result);
         result.should.be.an('object');
         result.should.have.keys(['@context', 'id', 'type']);
-        result.id.should.equal(keyId);
       });
       it('successfully generates a AesKeyWrappingKey2019', async () => {
         const keystore = {
           id: 'https://example.com/keystores/x',
           kmsModule: 'ssm-v1'
         };
-        const keyId = `${keystore.id}/keys/${await generateId()}`;
         const operation = clone(
           mockData.operations.generate({type: 'AesKeyWrappingKey2019'}));
-        operation.invocationTarget.id = keyId;
         operation.invocationTarget.type = 'AesKeyWrappingKey2019';
         let error;
         let result;
@@ -107,17 +95,14 @@ describe('bedrock-kms', () => {
         should.exist(result);
         result.should.be.an('object');
         result.should.have.keys(['@context', 'id', 'type']);
-        result.id.should.equal(keyId);
       });
       it('throws on UnknownKeyType', async () => {
         const keystore = {
           id: 'https://example.com/keystores/x',
           kmsModule: 'ssm-v1'
         };
-        const keyId = `${keystore.id}/keys/${await generateId()}`;
         const operation = clone(
           mockData.operations.generate({type: 'AesKeyWrappingKey2019'}));
-        operation.invocationTarget.id = keyId;
         operation.invocationTarget.type = 'UnknownKeyType';
         let error;
         let result;
