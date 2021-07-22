@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 7.0.0 - 2021-xx-xx
+## 7.0.0 - 2021-07-22
 
 ### Added
 - Add `getStorageUsage` API. This function can be called with a meter ID,
