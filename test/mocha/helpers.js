@@ -5,7 +5,7 @@
 
 const brKms = require('bedrock-kms');
 const {runOperation} = require('webkms-switch');
-const {util: {clone, uuid}} = require('bedrock');
+const {util: {clone}} = require('bedrock');
 const {generateId} = require('bnid');
 
 exports.generateKey = async ({mockData, type}) => {
