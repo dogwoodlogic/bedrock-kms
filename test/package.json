@@ -24,7 +24,7 @@
     "bedrock-mongodb": "^8.2.0",
     "bedrock-package-manager": "^1.0.1",
     "bedrock-security-context": "^4.1.0",
-    "bedrock-ssm-mongodb": "digitalbazaar/bedrock-ssm-mongodb#update",
+    "bedrock-ssm-mongodb": "^6.0.0",
     "bedrock-test": "^5.4.0",
     "bedrock-veres-one-context": "^11.0.0",
     "bnid": "^2.0.0",
@@ -33,7 +33,7 @@
     "nyc": "^15.1.0",
     "sha256-hmac-key-2019-context": "^1.0.3",
     "webkms-context": "^1.0.0",
-    "webkms-switch": "digitalbazaar/webkms-switch#refactor"
+    "webkms-switch": "^7.0.0"
   },
   "nyc": {
     "excludeNodeModules": false,
